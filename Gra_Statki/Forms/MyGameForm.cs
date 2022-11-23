@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Gra_Statki
+namespace Gra_Statki.Forms
 {
-    public partial class Form1 : Form
+    public partial class MyGameForm : Form
     {
-        public Form1()
+        public MyGameForm()
         {
             InitializeComponent();
         }

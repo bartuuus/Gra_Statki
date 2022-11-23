@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Coordinates.cs" />
+    <Compile Include="Classes\Drawing.cs" />
+    <Compile Include="Classes\Player.cs" />
     <Compile Include="Forms\GameSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,16 +93,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\hitImage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\splashImage.png" />
+    <Folder Include="Recources\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\board.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Recources\" />
+    <None Include="Resources\hitImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splashImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

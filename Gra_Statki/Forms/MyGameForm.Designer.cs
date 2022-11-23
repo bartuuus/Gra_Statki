@@ -36,8 +36,8 @@
             // 
             // pbComputerBoard
             // 
-            this.pbComputerBoard.Image = global::Gra_Statki.Properties.Resources.Board;
-            this.pbComputerBoard.InitialImage = global::Gra_Statki.Properties.Resources.Board;
+            this.pbComputerBoard.Image = global::Gra_Statki.Properties.Resources.board;
+            this.pbComputerBoard.InitialImage = global::Gra_Statki.Properties.Resources.board;
             this.pbComputerBoard.Location = new System.Drawing.Point(28, 32);
             this.pbComputerBoard.Name = "pbComputerBoard";
             this.pbComputerBoard.Size = new System.Drawing.Size(400, 400);
@@ -47,8 +47,8 @@
             // 
             // pbPlayerBoard
             // 
-            this.pbPlayerBoard.Image = global::Gra_Statki.Properties.Resources.Board;
-            this.pbPlayerBoard.InitialImage = global::Gra_Statki.Properties.Resources.Board;
+            this.pbPlayerBoard.Image = global::Gra_Statki.Properties.Resources.board;
+            this.pbPlayerBoard.InitialImage = global::Gra_Statki.Properties.Resources.board;
             this.pbPlayerBoard.Location = new System.Drawing.Point(504, 32);
             this.pbPlayerBoard.Name = "pbPlayerBoard";
             this.pbPlayerBoard.Size = new System.Drawing.Size(400, 400);

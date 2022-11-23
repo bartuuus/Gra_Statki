@@ -62,6 +62,7 @@
             // 
             this.btnRotate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRotate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnRotate.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnRotate.Location = new System.Drawing.Point(485, 250);
             this.btnRotate.Name = "btnRotate";
             this.btnRotate.Size = new System.Drawing.Size(133, 43);
@@ -89,8 +90,8 @@
             // 
             // pbPlayerBoard
             // 
-            this.pbPlayerBoard.Image = global::Gra_Statki.Properties.Resources.Board;
-            this.pbPlayerBoard.InitialImage = global::Gra_Statki.Properties.Resources.Board;
+            this.pbPlayerBoard.Image = global::Gra_Statki.Properties.Resources.board;
+            this.pbPlayerBoard.InitialImage = global::Gra_Statki.Properties.Resources.board;
             this.pbPlayerBoard.Location = new System.Drawing.Point(12, 12);
             this.pbPlayerBoard.Name = "pbPlayerBoard";
             this.pbPlayerBoard.Size = new System.Drawing.Size(400, 400);

@@ -69,6 +69,7 @@
             this.btnRotate.TabIndex = 2;
             this.btnRotate.Text = "Obróć";
             this.btnRotate.UseVisualStyleBackColor = true;
+            this.btnRotate.Click += new System.EventHandler(this.BtnRotate_Click);
             // 
             // btnNext
             // 
@@ -90,6 +91,7 @@
             // 
             // pbPlayerBoard
             // 
+            this.pbPlayerBoard.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pbPlayerBoard.Image = global::Gra_Statki.Properties.Resources.board;
             this.pbPlayerBoard.InitialImage = global::Gra_Statki.Properties.Resources.board;
             this.pbPlayerBoard.Location = new System.Drawing.Point(12, 12);
@@ -98,11 +100,13 @@
             this.pbPlayerBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPlayerBoard.TabIndex = 5;
             this.pbPlayerBoard.TabStop = false;
+            this.pbPlayerBoard.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PbPlayerBoard_MouseMove);
             // 
             // GameSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(675, 425);
             this.Controls.Add(this.pbPlayerBoard);
             this.Controls.Add(this.txtPlayerName);

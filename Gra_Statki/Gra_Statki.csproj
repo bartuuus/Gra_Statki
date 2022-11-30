@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Classes\Coordinates.cs" />
     <Compile Include="Classes\Drawing.cs" />
+    <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Forms\GameSettingsForm.cs">
       <SubType>Form</SubType>

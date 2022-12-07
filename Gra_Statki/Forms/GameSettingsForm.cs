@@ -42,22 +42,14 @@ namespace Gra_Statki.Forms
                                                               
         private void PbPlayerBoard_MouseMove(object sender, MouseEventArgs e)
         {
-            if (actualShipIndex >= 4)
+            if (actualShipIndex >= 4 || !IsMouseOnBoard())
             {
-
-                if (mouseX != OUT_OF_BOUND || mouseY != OUT_OF_BOUND)
-                {
-                    mouseX = OUT_OF_BOUND;
-                    mouseY = OUT_OF_BOUND;
-
-                    pbPlayerBoard.Refresh();
-                }
                 return;
             }
 
 
 
-           mouseX = Coordinates.GetCell(Coordinates.GetX(this, pbPlayerBoard));
+            mouseX = Coordinates.GetCell(Coordinates.GetX(this, pbPlayerBoard));
            mouseY = Coordinates.GetCell(Coordinates.GetY(this, pbPlayerBoard));
            mouseOnBoard = mouseX != -1 && mouseY != -1;
 
@@ -94,6 +86,18 @@ namespace Gra_Statki.Forms
           
         }
 
+        private bool IsMouseOnBoard()
+        {
+            if (mouseX != OUT_OF_BOUND || mouseY != OUT_OF_BOUND)
+            {
+                mouseX = OUT_OF_BOUND;
+                mouseY = OUT_OF_BOUND;
+                pbPlayerBoard.Refresh();
+                return false;
+            }
+            return true;
+        }
+
         private void BtnRotate_Click(object sender, EventArgs e)
         {
             horizontally = !horizontally;
@@ -103,7 +107,41 @@ namespace Gra_Statki.Forms
 
         private void PbPlayerBoard_Click(object sender, EventArgs e)
         {
+            if (!IsMouseOnBoard())
+            {
+                return;
+            }
+            if (!Game.CanShipBePlaced(actualShipIndex, mouseX, mouseY, horizontally, Game.PlayerOne.Board))
+            {
+                return;
+            }
+
+            settedShips[actualShipIndex] = true;
+            Game.SetShip(actualShipIndex, mouseX, mouseY, horizontally, Game.PlayerOne.Board);
+            pbPlayerBoard.Refresh();
+            if (actualShipIndex < Game.ShipsSize.Length)
+            {
+                actualShipIndex++;
+            }
+
+            if (AreAllShipsPlaced())
+            {
+                btnNext.Enabled = true;
+            }
 
         }
+
+        private bool AreAllShipsPlaced()
+        {
+            foreach(var ship in settedShips)
+            {
+                if(ship!= true)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
     }
 }

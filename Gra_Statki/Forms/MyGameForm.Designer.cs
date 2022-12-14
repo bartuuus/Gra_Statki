@@ -36,6 +36,7 @@
             // 
             // pbComputerBoard
             // 
+            this.pbComputerBoard.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pbComputerBoard.Image = global::Gra_Statki.Properties.Resources.board;
             this.pbComputerBoard.InitialImage = global::Gra_Statki.Properties.Resources.board;
             this.pbComputerBoard.Location = new System.Drawing.Point(28, 32);
@@ -44,9 +45,11 @@
             this.pbComputerBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbComputerBoard.TabIndex = 0;
             this.pbComputerBoard.TabStop = false;
+            this.pbComputerBoard.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PbComputerBoard_MouseMove);
             // 
             // pbPlayerBoard
             // 
+            this.pbPlayerBoard.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pbPlayerBoard.Image = global::Gra_Statki.Properties.Resources.board;
             this.pbPlayerBoard.InitialImage = global::Gra_Statki.Properties.Resources.board;
             this.pbPlayerBoard.Location = new System.Drawing.Point(504, 32);
@@ -55,11 +58,13 @@
             this.pbPlayerBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPlayerBoard.TabIndex = 1;
             this.pbPlayerBoard.TabStop = false;
+            this.pbPlayerBoard.Paint += new System.Windows.Forms.PaintEventHandler(this.PbPlayerBoard_Paint);
             // 
             // MyGameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(933, 457);
             this.Controls.Add(this.pbPlayerBoard);
             this.Controls.Add(this.pbComputerBoard);

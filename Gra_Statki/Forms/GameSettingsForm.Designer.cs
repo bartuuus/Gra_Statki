@@ -57,7 +57,6 @@
             this.lblPlayerName.Size = new System.Drawing.Size(201, 13);
             this.lblPlayerName.TabIndex = 1;
             this.lblPlayerName.Text = "Nalezy wprowadzic nazwe gracza.";
-            this.lblPlayerName.Click += new System.EventHandler(this.LblPlayerName_Click);
             // 
             // btnRotate
             // 
@@ -82,6 +81,7 @@
             this.btnNext.TabIndex = 3;
             this.btnNext.Text = "Dalej";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.BtnNext_Click);
             // 
             // txtPlayerName
             // 
@@ -102,6 +102,7 @@
             this.pbPlayerBoard.TabIndex = 5;
             this.pbPlayerBoard.TabStop = false;
             this.pbPlayerBoard.Click += new System.EventHandler(this.PbPlayerBoard_Click);
+            this.pbPlayerBoard.Paint += new System.Windows.Forms.PaintEventHandler(this.PbPlayerBoard_Paint);
             this.pbPlayerBoard.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PbPlayerBoard_MouseMove);
             // 
             // GameSettingsForm

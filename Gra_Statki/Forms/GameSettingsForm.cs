@@ -49,7 +49,7 @@ namespace Gra_Statki.Forms
 
 
 
-            mouseX = Coordinates.GetCell(Coordinates.GetX(this, pbPlayerBoard));
+           mouseX = Coordinates.GetCell(Coordinates.GetX(this, pbPlayerBoard));
            mouseY = Coordinates.GetCell(Coordinates.GetY(this, pbPlayerBoard));
            mouseOnBoard = mouseX != -1 && mouseY != -1;
 
@@ -90,12 +90,10 @@ namespace Gra_Statki.Forms
         {
             if (mouseX != OUT_OF_BOUND || mouseY != OUT_OF_BOUND)
             {
-                mouseX = OUT_OF_BOUND;
-                mouseY = OUT_OF_BOUND;
                 pbPlayerBoard.Refresh();
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
 
         private void BtnRotate_Click(object sender, EventArgs e)
@@ -143,5 +141,29 @@ namespace Gra_Statki.Forms
             return true;
         }
 
+        private void PbPlayerBoard_Paint(object sender, PaintEventArgs e)
+        {
+            Drawing.DrawPlacedCells(Game.PlayerOne.Board, e);
+        }
+
+        private void BtnNext_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPlayerName.Text))
+            {
+                lblPlayerName.Visible = true;
+            }
+            else
+            {
+                Game.PlayerOne.PlayerName = txtPlayerName.Text;
+                Game.ComputerPlayer.PlayerName = "Computer";
+
+                Game.SetComputerShips();
+
+                MyGameForm mainGame = new MyGameForm();
+                mainGame.Show();
+
+                this.Hide();
+            }
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace Gra_Statki.Classes
                     return false;
                 }
 
-                if(!IsCellsAroundOcpied(cellX, cellY, actualShipIndex, cells))
+                if(IsCellsAroundOcpied(cellX, cellY, actualShipIndex, cells))
                 {
                     return false;
                 }
@@ -41,7 +41,7 @@ namespace Gra_Statki.Classes
                     return false;
                 }
 
-                if (!IsCellsAroundOcpied(cellY, cellX, actualShipIndex, cells))
+                if (IsCellsAroundOcpied(cellY, cellX, actualShipIndex, cells))
                 {
                     return false;
                 }
@@ -93,5 +93,71 @@ namespace Gra_Statki.Classes
             return true;
         }
 
+        public static void SetShip(int actualShipIndex, int mouseX, int mouseY, bool horizontally, int[,] board)
+        {
+            if (horizontally)
+            {
+                for(int i =0; i < Game.ShipsSize[actualShipIndex]; i++)
+                {
+                    board[mouseX + i, mouseY] = actualShipIndex;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < Game.ShipsSize[actualShipIndex]; i++)
+                {
+                    board[mouseX, mouseY + i] = actualShipIndex;
+                }
+            }
+        }
+
+        public static void SetComputerShips()
+        {
+            Random random = new Random();
+            for(int shipIndex = 0; shipIndex < ShipsSize.Length;)
+            {
+                int x = random.Next(Player.BoardSize);
+                int y = random.Next(Player.BoardSize);
+
+                if(CanShipBePlaced(shipIndex, x, y, true, Game.ComputerPlayer.Board))
+                {
+                    SetShip(shipIndex, x, y, true, Game.ComputerPlayer.Board);
+                    shipIndex++;
+                }
+            }
+        }
+        public static bool PerformAttack(int x, int y, Player attacker , Player defender)
+        {
+            defender.HittedFields[x, y] = true;
+            if (defender.Board[x, y] != -1)
+            {
+                defender.Fleet[defender.Board[x, y]]--;
+                if (defender.Fleet[defender.Board[x, y]] == 0)
+                {
+                    defender.ShipCountToDestroy--;
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static int[] ComputerAttack(Player player)
+        {
+            Random r = new Random();
+            int x = r.Next(0, 9);
+            int y = r.Next(0, 9);
+
+            while (player.HittedFields[x, y] == true)
+            {
+                x = r.Next(0, 9);
+
+                y = r.Next(0, 9);
+            }
+            return new int[] { x, y };
+        }
+        
+       
     }
 }

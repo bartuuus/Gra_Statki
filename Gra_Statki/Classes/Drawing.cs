@@ -36,5 +36,23 @@ namespace Gra_Statki.Classes
             graph.DrawRectangle(pen, cellX * CELL_WIDTH, cellY * CELL_HEIGHT, FRAME_WIDTH, FRAME_HEIGHT);
         }
 
+        public static void DrawPlacedCells(int [,] cells, PaintEventArgs e)
+        {
+            for(int x = 0; x<Player.BoardSize; x++)
+            {
+                for(int y=0; y<Player.BoardSize; y++)
+                {
+                    if(Game.IsCellOcupied(cells, x, y))
+                    {
+                        DrawCell(x, y, cells[x, y], e);
+                    }
+                }
+            }
+        }
+
+        private static void DrawCell(int x, int y, int v, PaintEventArgs e)
+        {
+            e.Graphics.FillRectangle(Colors[v], x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
+        }
     }
 }

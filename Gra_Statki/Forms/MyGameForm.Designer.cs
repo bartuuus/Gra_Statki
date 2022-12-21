@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pbComputerBoard = new System.Windows.Forms.PictureBox();
             this.pbPlayerBoard = new System.Windows.Forms.PictureBox();
+            this.timerComputerMove = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbComputerBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayerBoard)).BeginInit();
             this.SuspendLayout();
@@ -45,6 +47,8 @@
             this.pbComputerBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbComputerBoard.TabIndex = 0;
             this.pbComputerBoard.TabStop = false;
+            this.pbComputerBoard.Click += new System.EventHandler(this.PbComputerBoard_Click);
+            this.pbComputerBoard.Paint += new System.Windows.Forms.PaintEventHandler(this.PbComputerBoard_Paint);
             this.pbComputerBoard.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PbComputerBoard_MouseMove);
             // 
             // pbPlayerBoard
@@ -60,6 +64,10 @@
             this.pbPlayerBoard.TabStop = false;
             this.pbPlayerBoard.Paint += new System.Windows.Forms.PaintEventHandler(this.PbPlayerBoard_Paint);
             // 
+            // timerComputerMove
+            // 
+            this.timerComputerMove.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
             // MyGameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -70,6 +78,7 @@
             this.Controls.Add(this.pbComputerBoard);
             this.Name = "MyGameForm";
             this.Text = "MyGameForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MyGameForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pbComputerBoard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlayerBoard)).EndInit();
             this.ResumeLayout(false);
@@ -80,5 +89,6 @@
 
         private System.Windows.Forms.PictureBox pbComputerBoard;
         private System.Windows.Forms.PictureBox pbPlayerBoard;
+        private System.Windows.Forms.Timer timerComputerMove;
     }
 }

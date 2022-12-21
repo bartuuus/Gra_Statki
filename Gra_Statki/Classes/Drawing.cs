@@ -54,5 +54,57 @@ namespace Gra_Statki.Classes
         {
             e.Graphics.FillRectangle(Colors[v], x * CELL_WIDTH, y * CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT);
         }
+
+        private static void DrawHittedCell(int cellX, int cellY, PaintEventArgs e)
+        {
+            e.Graphics.DrawImage(Drawing.hitImage, cellX * CELL_WIDTH, cellY * CELL_HEIGHT);
+        }
+
+        private static void DrawMissedCell(int cellX, int cellY, PaintEventArgs e)
+        {
+            e.Graphics.DrawImage(Drawing.splashImage, cellX * CELL_WIDTH, cellY * CELL_HEIGHT);
+        }
+
+        public static void DrawKilledShip(int[,] cells, int[] shipHit, PaintEventArgs e)
+        {
+            for(int actuallShip = 0; actuallShip < Game.ShipsSize.Length; actuallShip++)
+            {
+                if(shipHit[actuallShip] == 0)
+                {
+                    for(int x = 0; x<Player.BoardSize; x++)
+                    {
+                        for(int y = 0; y<Player.BoardSize; y++)
+                        {
+                            if(cells[x,y] == actuallShip)
+                            {
+                                DrawCell(x, y, actuallShip, e);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void DrawCells(bool[,] hittedCells, int[,] cells, PaintEventArgs e)
+        {
+            for (int x = 0; x < Player.BoardSize; x++)
+            {
+                for (int y = 0; y < Player.BoardSize; y++)
+                {
+                    if (hittedCells[x, y])
+                    {
+                        if(cells[x,y] != -1)
+                        {
+                            DrawHittedCell(x, y, e);
+                        }
+                        else
+                        {
+                            DrawMissedCell(x, y, e);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

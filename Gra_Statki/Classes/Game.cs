@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Gra_Statki.Classes
 {
@@ -93,6 +94,11 @@ namespace Gra_Statki.Classes
             return true;
         }
 
+        internal static void EndGame(Player player)
+        {
+            MessageBox.Show($"Koniec gry :) \n Wygrał: {Game.PlayerOne.PlayerName}");
+        }
+
         public static void SetShip(int actualShipIndex, int mouseX, int mouseY, bool horizontally, int[,] board)
         {
             if (horizontally)
@@ -146,8 +152,8 @@ namespace Gra_Statki.Classes
         public static int[] ComputerAttack(Player player)
         {
             Random r = new Random();
-            int x = r.Next(0, 9);
-            int y = r.Next(0, 9);
+            int x = r.Next(0, 10);
+            int y = r.Next(0, 10);
 
             while (player.HittedFields[x, y] == true)
             {
